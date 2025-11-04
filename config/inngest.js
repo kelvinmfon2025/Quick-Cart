@@ -2,7 +2,7 @@ import { inngest } from "inngest";
 import { connect } from "mongoose";
 
 // Create a client to send and receive events
-export const inngest = new inngest({ id: "quickcart-next" });
+export const Inngest = new inngest({ id: "quickcart-next" });
 
 // Ingest function to save user data to a database
 export const syncUserCreation = inngest.createFunction(
@@ -16,7 +16,6 @@ export const syncUserCreation = inngest.createFunction(
     const userData = {
       _id: id,
       email: email_addresses[0].email_address,
-      
       name: first_name + " " + last_name,
       imageUrl: image_url,
     };
