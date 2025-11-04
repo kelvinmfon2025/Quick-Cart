@@ -5,7 +5,7 @@ import { connect } from "mongoose";
 export const inngest = new inngest({ id: "quickcart-next" });
 
 // Ingest function to save user data to a database
-export const saveUserInDB = inngest.createFunction(
+export const syncUserCreation = inngest.createFunction(
   {
     id: "sync-user-from-clerk",
   },
@@ -16,6 +16,7 @@ export const saveUserInDB = inngest.createFunction(
     const userData = {
       _id: id,
       email: email_addresses[0].email_address,
+      
       name: first_name + " " + last_name,
       imageUrl: image_url,
     };
