@@ -1,6 +1,5 @@
 import { Inngest } from "inngest";
-import connectDB from "./config/db";
-
+import { connect } from "mongoose";
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "quickcart-next" });
@@ -21,7 +20,7 @@ export const syncUserCreation = inngest.createFunction(
       imageUrl: image_url,
     };
 
-    await connectDB();
+    await connect();
     await User.create(userData);
   }
 );
@@ -43,7 +42,7 @@ export const syncUserUpdation = inngest.createFunction(
       imageUrl: image_url,
     };
 
-    await connectDB();
+    await connect();
     await User.findByIdAndUpdate(id, userData);
   }
 );
